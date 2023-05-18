@@ -1,39 +1,23 @@
-import java.sql.*;
-
-// Clase Administrador
-public class Admini {
-    // Atributos
-    private Connection conexion;
-    
+public class Administrador {
     // Constructor
-    public Administrador() throws SQLException {
-        // Crear conexión a la base de datos
-        String url = "jdbc:mysql://localhost:3306/ReporteRiesgosDB"; // Cambiar por la URL de tu base de datos
-        String usuario = "admin"; // Cambiar por el usuario de tu base de datos
-        String contrasena = "admin123"; // Cambiar por la contraseña de tu base de datos
-        conexion = DriverManager.getConnection(url, usuario, contrasena);
+    public Administrador() {
+        // Aquí puedes inicializar cualquier configuración adicional del administrador
     }
-    
+
     // Métodos para modificar los parámetros de la aplicación
-    public void modificarUbicacionGeografica(int id, double latitud, double longitud) throws SQLException {
-        String sql = "UPDATE reporte_riesgos SET latitud = ?, longitud = ? WHERE id = ?";
-        PreparedStatement stmt = conexion.prepareStatement(sql);
-        stmt.setDouble(1, latitud);
-        stmt.setDouble(2, longitud);
-        stmt.setInt(3, id);
-        stmt.executeUpdate();
+    public void modificarUbicacionGeografica(double latitud, double longitud) {
+        // Implementa la lógica para modificar la ubicación geográfica aquí
+        System.out.println("Ubicación modificada: Latitud: " + latitud + ", Longitud: " + longitud);
     }
-    
-    public void modificarTipoRiesgo(int id, String tipo) throws SQLException {
-        String sql = "UPDATE reporte_riesgos SET tipo_riesgo = ? WHERE id = ?";
-        PreparedStatement stmt = conexion.prepareStatement(sql);
-        stmt.setString(1, tipo);
-        stmt.setInt(2, id);
-        stmt.executeUpdate();
+
+    public void modificarTipoRiesgo(String tipo) {
+        // Implementa la lógica para modificar el tipo de riesgo aquí
+        System.out.println("Tipo de riesgo modificado: " + tipo);
     }
-    
-    // Métodos para cerrar la conexión a la base de datos
-    public void cerrarConexion() throws SQLException {
-        conexion.close();
+
+    // Método para cerrar la conexión a la base de datos
+    public void cerrarConexion() {
+        // Implementa la lógica para cerrar la conexión a la base de datos aquí
+        System.out.println("Conexión cerrada");
     }
 }
